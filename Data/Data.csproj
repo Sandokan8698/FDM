@@ -53,11 +53,13 @@
     <Compile Include="Abstract\Repositories\IAthleteRepository.cs" />
     <Compile Include="Abstract\IUnitOfWork.cs" />
     <Compile Include="Abstract\Repositories\IRepository.cs" />
+    <Compile Include="Abstract\Repositories\ISportRepository.cs" />
     <Compile Include="FDMContext.cs" />
     <Compile Include="Implementations\ComparisonExtend.cs" />
     <Compile Include="Implementations\Repositories\AthleteRepository.cs" />
     <Compile Include="Implementations\Repositories\DomainContextRepository.cs" />
     <Compile Include="Implementations\Repositories\Repository.cs" />
+    <Compile Include="Implementations\Repositories\SportRepository.cs" />
     <Compile Include="Implementations\UnitOfWork.cs" />
     <Compile Include="Migrations\201711200425411_InitialMigration.cs" />
     <Compile Include="Migrations\201711200425411_InitialMigration.Designer.cs">

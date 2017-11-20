@@ -4,6 +4,8 @@ using System.Web.Mvc;
 using Ninject;
 using Data.Abstract;
 using Data.Implementations;
+using WebIU.Infrastructure.Abstract;
+using WebIU.Infrastructure.Concrete;
 
 namespace WebIU.Infrastructure
 {
@@ -26,6 +28,7 @@ namespace WebIU.Infrastructure
         private void AddBindings()
         {
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
+            kernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
         }
     }
 }

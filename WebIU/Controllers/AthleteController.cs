@@ -7,6 +7,7 @@ using WebIU.ViewModels;
 
 namespace WebIU.Controllers
 {
+    [Authorize]
     public class AthleteController : Controller
     {
         private IUnitOfWork _unitOfWork;

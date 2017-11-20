@@ -1,5 +1,6 @@
 ﻿using System;
 using Data.Abstract;
+using Data.Abstract.Repositories;
 using Data.Implementations.Repositories;
 using Domain;
 
@@ -13,9 +14,11 @@ namespace Data.Implementations
         {
             _context = context;
             AthleteRepository = new AthleteRepository(context);
+            SportRepository = new SportRepository(context);
         }
 
         public IAthleteRepository AthleteRepository { get; private set; }
+        public ISportRepository SportRepository { get; private set; }
 
         public int Complete()
         {
