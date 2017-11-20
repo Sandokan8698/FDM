@@ -30,7 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FakerTest">
+      <HintPath>D:\FakerTest.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +50,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Abstract\Repositories\IAthleteRepository.cs" />
+    <Compile Include="Abstract\IUnitOfWork.cs" />
+    <Compile Include="Abstract\Repositories\IRepository.cs" />
+    <Compile Include="FDMContext.cs" />
+    <Compile Include="Implementations\ComparisonExtend.cs" />
+    <Compile Include="Implementations\Repositories\AthleteRepository.cs" />
+    <Compile Include="Implementations\Repositories\DomainContextRepository.cs" />
+    <Compile Include="Implementations\Repositories\Repository.cs" />
+    <Compile Include="Implementations\UnitOfWork.cs" />
+    <Compile Include="Migrations\201711200425411_InitialMigration.cs" />
+    <Compile Include="Migrations\201711200425411_InitialMigration.Designer.cs">
+      <DependentUpon>201711200425411_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711200432124_InitSport.cs" />
+    <Compile Include="Migrations\201711200432124_InitSport.Designer.cs">
+      <DependentUpon>201711200432124_InitSport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +75,18 @@
       <Project>{b555ef22-fbb6-477e-bf9e-8b04700945a4}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711200425411_InitialMigration.resx">
+      <DependentUpon>201711200425411_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711200432124_InitSport.resx">
+      <DependentUpon>201711200432124_InitSport.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
