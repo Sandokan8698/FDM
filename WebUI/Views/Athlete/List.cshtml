@@ -1,0 +1,51 @@
+﻿
+
+@using WebUI.HtmlHelpers
+@model WebUI.ViewModels.AthleteListViewModel
+
+@{
+    ViewBag.Title = "List";
+}
+
+
+<div class="block block-condensed">
+    <!-- START HEADING -->
+    <div class="app-heading app-heading-small">
+        <div class="title">
+            <h5>Extended Sortable Table</h5>
+            <p>Add class <code>datatable-extended</code> to get full-featured sortable table.</p>
+        </div>
+    </div>
+    <!-- END HEADING -->
+
+    <div class="block-content">
+
+        <table class="table table-striped table-bordered datatable-extended">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Deporte</th>
+                    <th>Fecha Inicio</th>
+                    <th>Cedula</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var a in Model.Athletes)
+                {
+                    <tr>
+                        <td>@a.Name</td>
+                        <td>@a.FatherSurName</td>
+                        <td>@a.MotherSurName</td>
+                        <td>@a.Sport.Name</td>
+                        <td>@a.BeginDate.ToString("d")</td>
+                        <td>@a.CI</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

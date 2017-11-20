@@ -28,7 +28,7 @@ namespace WebUI.Infrastructure
         }
         private void AddBindings()
         {
-            kernel.Bind<IUnitOfWork>().ToConstant(new UnitOfWork(new FDMContext()));
+            kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
         }
     }
 }

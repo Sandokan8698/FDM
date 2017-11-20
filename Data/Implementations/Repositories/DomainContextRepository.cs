@@ -6,7 +6,7 @@
         {
         }
 
-        public FDMContext CnnContext
+        public FDMContext FDMContext
         {
             get { return Context as FDMContext; }
         }

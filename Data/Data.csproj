@@ -67,6 +67,10 @@
     <Compile Include="Migrations\201711200432124_InitSport.Designer.cs">
       <DependentUpon>201711200432124_InitSport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711200506554_ChangeAthlete.cs" />
+    <Compile Include="Migrations\201711200506554_ChangeAthlete.Designer.cs">
+      <DependentUpon>201711200506554_ChangeAthlete.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711200432124_InitSport.resx">
       <DependentUpon>201711200432124_InitSport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711200506554_ChangeAthlete.resx">
+      <DependentUpon>201711200506554_ChangeAthlete.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

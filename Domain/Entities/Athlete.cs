@@ -67,7 +67,7 @@ namespace Domain.Entities
         [Column(TypeName = "date")]
         public DateTime BeginDate { get; set; }
 
-        public int RepresentantId { get; set; }
+        public int? RepresentantId { get; set; }
 
         public Representant Representant { get; set; }
     }
