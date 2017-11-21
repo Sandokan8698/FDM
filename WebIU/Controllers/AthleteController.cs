@@ -7,7 +7,7 @@ using WebIU.ViewModels;
 
 namespace WebIU.Controllers
 {
-    [Authorize]
+    
     public class AthleteController : Controller
     {
         private IUnitOfWork _unitOfWork;
@@ -35,6 +35,11 @@ namespace WebIU.Controllers
             };
             
             return View(athleteViewModel);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
         }
     }
 }

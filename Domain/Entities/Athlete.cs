@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,6 +11,7 @@ namespace Domain.Entities
 
         [Required]
         [MaxLength(100)]
+        [DisplayName("Nombre")]
         public string Name { get; set; }
 
         [Required]
