@@ -34,6 +34,7 @@ namespace Domain.Entities
 
         public int SportId { get; set; }
 
+        [DisplayName("Deporte")]
         public Sport Sport { get; set; }
 
         [Required]

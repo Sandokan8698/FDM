@@ -37,9 +37,24 @@ namespace WebIU.Controllers
             return View(athleteViewModel);
         }
 
-        public ActionResult Create()
+        [HttpPost]
+        public ActionResult Create(Athlete athlete)
         {
             return View();
+        }
+
+        public ActionResult New()
+        {
+            IEnumerable<Sport> sports;
+            using (_unitOfWork)
+            {
+                sports = _unitOfWork.SportRepository.GetAll();
+            }
+            AthleteNewViewModel viewModel = new AthleteNewViewModel
+            {
+                Sports = sports
+            };
+            return View(viewModel);
         }
     }
 }
