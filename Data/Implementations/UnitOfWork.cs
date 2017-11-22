@@ -16,11 +16,13 @@ namespace Data.Implementations
             AthleteRepository = new AthleteRepository(context);
             SportRepository = new SportRepository(context);
             CoachRepostitory = new CoachRepository(context);
+            UserRepository = new UserRepository(context);
         }
 
         public IAthleteRepository AthleteRepository { get; private set; }
         public ISportRepository SportRepository { get; private set; }
         public ICoachRepostitory CoachRepostitory { get; private set; }
+        public IUserRepository UserRepository { get; private set; }
 
         public int Complete()
         {

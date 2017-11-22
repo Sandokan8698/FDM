@@ -8,12 +8,14 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using Authorization;
 using Domain.Entities;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 
 namespace Data
 {
-    public class FDMContext: DbContext
+    public class FDMContext: IdentityDbContext<AppUser>
     {
         public FDMContext():base("name=FDMData")
         {
@@ -24,12 +26,20 @@ namespace Data
         public DbSet<Athlete> AthleteDbSet { get; set; }
         public DbSet<Sport> SportDbSet { get; set; }
         public DbSet<Coach> CoachDbSet { get; set; }
-        public DbSet<User> UserDbSet { get; set; }
+        public DbSet<Worker> WorkerDbse { get; set; }
+
+        public static FDMContext Create()
+        {
+            return new FDMContext();
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            
+
+            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
+            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
         }
 
     }

@@ -17,6 +17,8 @@
             {
                     @Html.AntiForgeryToken()
 
+                    @Html.HiddenFor(m => m.Coach.Id)
+
                     <div class="form-group">
                         @Html.LabelFor(m => m.Coach.Name)
                         @Html.TextBoxFor(m => m.Coach.Name, new { @class = "form-control", @placeholder = "Nombre" })
@@ -53,3 +55,7 @@
 
         </div>
     </div>
+
+<div>
+    <a href="@Url.Action("Index")"> <button type="button" class="btn btn-primary">Regresar</button> </a>
+</div>

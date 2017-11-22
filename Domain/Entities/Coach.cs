@@ -6,12 +6,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Authorization;
 
 namespace Domain.Entities
 {
-    public class Coach
+    [Table("Coach")]
+    public class Coach: AppUser
     {
-        public int CoachId { get; set; }
 
         public int SportId { get; set; }
 

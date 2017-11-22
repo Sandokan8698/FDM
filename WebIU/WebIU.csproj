@@ -489,6 +489,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Authorization\Authorization.csproj">
+      <Project>{766862f8-8467-492b-81c1-32dd55b6f50a}</Project>
+      <Name>Authorization</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{d02002e9-f1cf-4a59-80cb-bf87a61ab6c1}</Project>
       <Name>Data</Name>

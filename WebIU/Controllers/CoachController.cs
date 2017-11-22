@@ -72,10 +72,10 @@ namespace WebIU.Controllers
         }
 
         // GET: Coach/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            var viewModel = GetViewModel();
-
+            var viewModel = GetViewModel(id);
+           
             if (viewModel.Coach == null)
                 return HttpNotFound();
 
@@ -132,6 +132,20 @@ namespace WebIU.Controllers
             {
                 newCoachEditCreateViewModel.Sports = _unitOfWork.SportRepository.GetAll();
                 newCoachEditCreateViewModel.HomeTowns = new List<string>() { "Las Nave", "Caluma" };
+            }
+
+            return newCoachEditCreateViewModel;
+        }
+
+        private CoachEditCreateViewModel GetViewModel(string id)
+        {
+            CoachEditCreateViewModel newCoachEditCreateViewModel = new CoachEditCreateViewModel();
+
+            using (_unitOfWork)
+            {
+                newCoachEditCreateViewModel.Sports = _unitOfWork.SportRepository.GetAll();
+                newCoachEditCreateViewModel.HomeTowns = new List<string>() { "Las Nave", "Caluma" };
+                newCoachEditCreateViewModel.Coach = _unitOfWork.CoachRepostitory.Find(c => c.Id == id).First();
             }
 
             return newCoachEditCreateViewModel;

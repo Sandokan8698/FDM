@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D02002E9-F1CF-4A59-80CB-BF87A61AB6C1}</ProjectGuid>
+    <ProjectGuid>{766862F8-8467-492B-81C1-32DD55B6F50A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Data</RootNamespace>
-    <AssemblyName>Data</AssemblyName>
+    <RootNamespace>Authorization</RootNamespace>
+    <AssemblyName>Authorization</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,13 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="FakerTest">
-      <HintPath>D:\FakerTest.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -56,46 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\Repositories\IAthleteRepository.cs" />
-    <Compile Include="Abstract\IUnitOfWork.cs" />
-    <Compile Include="Abstract\Repositories\ICoachRepostitory.cs" />
-    <Compile Include="Abstract\Repositories\IRepository.cs" />
-    <Compile Include="Abstract\Repositories\ISportRepository.cs" />
-    <Compile Include="Abstract\Repositories\IUserRepository.cs" />
-    <Compile Include="FDMContext.cs" />
-    <Compile Include="Implementations\ComparisonExtend.cs" />
-    <Compile Include="Implementations\Repositories\AthleteRepository.cs" />
-    <Compile Include="Implementations\Repositories\CoachRepository.cs" />
-    <Compile Include="Implementations\Repositories\DomainContextRepository.cs" />
-    <Compile Include="Implementations\Repositories\Repository.cs" />
-    <Compile Include="Implementations\Repositories\SportRepository.cs" />
-    <Compile Include="Implementations\Repositories\UserRepository.cs" />
-    <Compile Include="Implementations\UnitOfWork.cs" />
-    <Compile Include="Migrations\201711222243221_InitialMigration.cs" />
-    <Compile Include="Migrations\201711222243221_InitialMigration.Designer.cs">
-      <DependentUpon>201711222243221_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="AppUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Authorization\Authorization.csproj">
-      <Project>{766862f8-8467-492b-81c1-32dd55b6f50a}</Project>
-      <Name>Authorization</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{b555ef22-fbb6-477e-bf9e-8b04700945a4}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711222243221_InitialMigration.resx">
-      <DependentUpon>201711222243221_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
