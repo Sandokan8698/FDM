@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Entities\Athlete.cs" />
     <Compile Include="Entities\Coach.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Representant.cs" />
     <Compile Include="Entities\Sport.cs" />

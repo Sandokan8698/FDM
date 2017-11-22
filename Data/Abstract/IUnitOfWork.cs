@@ -8,6 +8,7 @@ namespace Data.Abstract
         IAthleteRepository AthleteRepository { get; }
         ISportRepository SportRepository { get; }
         ICoachRepostitory CoachRepostitory { get; }
+        IUserRepository UserRepository { get; }
      
         int Complete();
     }

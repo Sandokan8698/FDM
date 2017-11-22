@@ -55,6 +55,7 @@
     <Compile Include="Abstract\Repositories\ICoachRepostitory.cs" />
     <Compile Include="Abstract\Repositories\IRepository.cs" />
     <Compile Include="Abstract\Repositories\ISportRepository.cs" />
+    <Compile Include="Abstract\Repositories\IUserRepository.cs" />
     <Compile Include="FDMContext.cs" />
     <Compile Include="Implementations\ComparisonExtend.cs" />
     <Compile Include="Implementations\Repositories\AthleteRepository.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Implementations\Repositories\DomainContextRepository.cs" />
     <Compile Include="Implementations\Repositories\Repository.cs" />
     <Compile Include="Implementations\Repositories\SportRepository.cs" />
+    <Compile Include="Implementations\Repositories\UserRepository.cs" />
     <Compile Include="Implementations\UnitOfWork.cs" />
     <Compile Include="Migrations\201711200425411_InitialMigration.cs" />
     <Compile Include="Migrations\201711200425411_InitialMigration.Designer.cs">
@@ -82,6 +84,10 @@
     <Compile Include="Migrations\201711212127102_AddCoachMigration1.cs" />
     <Compile Include="Migrations\201711212127102_AddCoachMigration1.Designer.cs">
       <DependentUpon>201711212127102_AddCoachMigration1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711220454114_AddUserMigration.cs" />
+    <Compile Include="Migrations\201711220454114_AddUserMigration.Designer.cs">
+      <DependentUpon>201711220454114_AddUserMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711212127102_AddCoachMigration1.resx">
       <DependentUpon>201711212127102_AddCoachMigration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711220454114_AddUserMigration.resx">
+      <DependentUpon>201711220454114_AddUserMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
