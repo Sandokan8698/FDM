@@ -1,0 +1,84 @@
+﻿@using WebIU.Models
+@using WebIU.ViewModels
+@model CoachEditCreateViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@section PageHeading
+{
+    @Html.Partial("PageHeading", new PageHeadingViewModel
+{
+    Title = "Entrenador",
+    Subtitle = "Editar Entrenador",
+    Sections = new List<SectionLink>()
+    {
+        new SectionLink{Nombre = "Home", Action = "List", Controller = "Athlete"},
+        new SectionLink{Nombre = "Entrenador", Action = "Index", Controller = "Coach"},
+        new SectionLink{Nombre = "Editar"}
+    }
+})
+}
+
+
+<div class="row">
+
+    <div class="col-md-6">
+
+        <!-- OTHER EXAMPLE -->
+        <div class="block">
+
+            <div class="app-heading app-heading-small">
+                <div class="title">
+                    <h2>Other Fields</h2>
+                    <p>Examples of other field types</p>
+                </div>
+            </div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.HiddenFor(m => m.Coach.CoachId)
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Coach.Name)
+                    @Html.TextBoxFor(m => m.Coach.Name, new { @class = "form-control", @placeholder = "Nombre" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Coach.LatName)
+                    @Html.TextBoxFor(m => m.Coach.LatName, new { @class = "form-control", @placeholder = "Apellidos" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Coach.CI)
+                    @Html.TextBoxFor(m => m.Coach.CI, new { @class = "form-control", @placeholder = "Cedula" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Coach.HomeTown)
+                    @Html.DropDownListFor(m => m.Coach.HomeTown, new SelectList(Model.HomeTowns), "", new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Coach.Sport)
+                    @Html.DropDownListFor(m => m.Coach.SportId, new SelectList(Model.Sports, "SportId", "Name"), "", new { @class = "form-control" })
+                </div>
+
+                <div class="form-group margin-top-20">
+                    <button class="btn btn-default" type="submit">Crear</button>
+                </div>
+            }
+
+        </div>
+        <!-- END OTHER EXAMPLE -->
+
+    </div>
+</div>
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

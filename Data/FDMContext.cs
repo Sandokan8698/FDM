@@ -23,11 +23,13 @@ namespace Data
 
         public DbSet<Athlete> AthleteDbSet { get; set; }
         public DbSet<Sport> SportDbSet { get; set; }
+        public DbSet<Coach> CoachDbSet { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             
         }
+
     }
 }

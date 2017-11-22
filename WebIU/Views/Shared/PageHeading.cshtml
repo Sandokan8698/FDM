@@ -1,0 +1,26 @@
+﻿@model WebIU.ViewModels.PageHeadingViewModel
+
+<div class="app-heading app-heading-bordered app-heading-page">
+    <div class="icon icon-lg">
+        <span class="icon-home"></span>
+    </div>
+    <div class="title">
+        <h1>@Model.Title</h1>
+        <p>@Model.Subtitle</p>
+    </div>
+</div>
+
+<div class="app-heading-container app-heading-bordered bottom">
+    <ul class="breadcrumb">
+        @foreach (var sectionlink in Model.Sections)
+        {
+            if (sectionlink != Model.Sections.Last())
+            {
+                <li>@Html.ActionLink(sectionlink.Nombre,sectionlink.Action,sectionlink.Controller)</li>
+            }
+
+        }
+        
+        <li class="active">@Model.Sections.Last().Nombre</li>
+    </ul>
+</div>

@@ -52,11 +52,13 @@
   <ItemGroup>
     <Compile Include="Abstract\Repositories\IAthleteRepository.cs" />
     <Compile Include="Abstract\IUnitOfWork.cs" />
+    <Compile Include="Abstract\Repositories\ICoachRepostitory.cs" />
     <Compile Include="Abstract\Repositories\IRepository.cs" />
     <Compile Include="Abstract\Repositories\ISportRepository.cs" />
     <Compile Include="FDMContext.cs" />
     <Compile Include="Implementations\ComparisonExtend.cs" />
     <Compile Include="Implementations\Repositories\AthleteRepository.cs" />
+    <Compile Include="Implementations\Repositories\CoachRepository.cs" />
     <Compile Include="Implementations\Repositories\DomainContextRepository.cs" />
     <Compile Include="Implementations\Repositories\Repository.cs" />
     <Compile Include="Implementations\Repositories\SportRepository.cs" />
@@ -72,6 +74,14 @@
     <Compile Include="Migrations\201711200506554_ChangeAthlete.cs" />
     <Compile Include="Migrations\201711200506554_ChangeAthlete.Designer.cs">
       <DependentUpon>201711200506554_ChangeAthlete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711211836292_AddCoachMigration.cs" />
+    <Compile Include="Migrations\201711211836292_AddCoachMigration.Designer.cs">
+      <DependentUpon>201711211836292_AddCoachMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711212127102_AddCoachMigration1.cs" />
+    <Compile Include="Migrations\201711212127102_AddCoachMigration1.Designer.cs">
+      <DependentUpon>201711212127102_AddCoachMigration1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,6 +105,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711200506554_ChangeAthlete.resx">
       <DependentUpon>201711200506554_ChangeAthlete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711211836292_AddCoachMigration.resx">
+      <DependentUpon>201711211836292_AddCoachMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711212127102_AddCoachMigration1.resx">
+      <DependentUpon>201711212127102_AddCoachMigration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
