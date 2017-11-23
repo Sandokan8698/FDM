@@ -17,7 +17,10 @@
             {
                 @Html.AntiForgeryToken()
 
-                @Html.HiddenFor(m => m.Coach.Id)
+                if (Model.Coach != null && Model.Coach.Id > 0)
+                 {
+                     @Html.HiddenFor(m => m.Coach.Id)
+                 }
 
                 <div class="form-group">
                     @Html.LabelFor(m => m.Coach.Name)
@@ -26,24 +29,32 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Coach.LatName)
-                    @Html.TextBoxFor(m => m.Coach.LatName, new { @class = "form-control", @placeholder = "Apellidos" })
+                    @Html.LabelFor(m => m.Coach.LastName)
+                    @Html.TextBoxFor(m => m.Coach.LastName, new { @class = "form-control", @placeholder = "Apellidos" })
+                    @Html.ValidationMessageFor(m => m.Coach.LastName)
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(m => m.Coach.CI)
                     @Html.TextBoxFor(m => m.Coach.CI, new { @class = "form-control", @placeholder = "Cedula" })
+                    @Html.ValidationMessageFor(m => m.Coach.CI)
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(m => m.Coach.HomeTown)
                     @Html.DropDownListFor(m => m.Coach.HomeTown, new SelectList(Model.HomeTowns), "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Coach.HomeTown)
                 </div>
 
                 <div class="form-group">
                     @Html.LabelFor(m => m.Coach.Sport)
                     @Html.DropDownListFor(m => m.Coach.SportId, new SelectList(Model.Sports, "SportId", "Name"), "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Coach.Sport)
                 </div>
+
+                    @Html.HiddenFor(m => m.HomeTowns)
+
+                    @Html.HiddenFor(m => m.Sports)
 
                 <div class="form-group margin-top-20">
                     <button class="btn btn-default" type="submit">Crear</button>

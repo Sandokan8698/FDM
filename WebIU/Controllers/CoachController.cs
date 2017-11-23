@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Authorization;
 using Data.Abstract;
 using Domain.Entities;
+using Microsoft.AspNet.Identity;
 using WebIU.ViewModels;
 
 namespace WebIU.Controllers
@@ -47,11 +49,15 @@ namespace WebIU.Controllers
         [HttpPost]
         public ActionResult Create(Coach coach)
         {
+            CoachEditCreateViewModel viewModel = new CoachEditCreateViewModel
+            {
+                Coach = coach
+            };
+
+
             if (!ModelState.IsValid)
             {
-                var viewModel = GetViewModel();
-                viewModel.Coach = coach;
-
+                viewModel = GetViewModel();
                 return View(viewModel);
             }
 
@@ -59,23 +65,30 @@ namespace WebIU.Controllers
             {
                 using (_unitOfWork)
                 {
+                    viewModel.Sports = _unitOfWork.SportRepository.GetAll();
+                    viewModel.HomeTowns = new List<string>() { "Las Nave", "Caluma" };
+
                     _unitOfWork.CoachRepostitory.Add(coach);
                     _unitOfWork.Complete();
+
+
                 }
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception exception)
             {
-                return View();
+
+                ViewBag.ErrorMessage = exception.Message;
+                return View(viewModel);
             }
         }
 
         // GET: Coach/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
             var viewModel = GetViewModel(id);
-           
+
             if (viewModel.Coach == null)
                 return HttpNotFound();
 
@@ -137,7 +150,7 @@ namespace WebIU.Controllers
             return newCoachEditCreateViewModel;
         }
 
-        private CoachEditCreateViewModel GetViewModel(string id)
+        private CoachEditCreateViewModel GetViewModel(int id)
         {
             CoachEditCreateViewModel newCoachEditCreateViewModel = new CoachEditCreateViewModel();
 

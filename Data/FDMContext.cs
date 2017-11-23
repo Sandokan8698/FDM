@@ -15,7 +15,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Data
 {
-    public class FDMContext: IdentityDbContext<AppUser>
+    public class FDMContext: IdentityDbContext<AppUser, MyRole, int, MyLogin, MyUserRole, MyClaim>
     {
         public FDMContext():base("name=FDMData")
         {
@@ -37,9 +37,9 @@ namespace Data
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
-            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
-            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
+            modelBuilder.Entity<MyLogin>().HasKey<int>(l => l.UserId);
+            modelBuilder.Entity<MyRole>().HasKey<int>(r => r.Id);
+            modelBuilder.Entity<MyUserRole>().HasKey(r => new { r.RoleId, r.UserId });
         }
 
     }

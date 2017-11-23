@@ -9,9 +9,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Authorization
 {
-    public class AppUser: IdentityUser
+    public class AppUser: IdentityUser<int,MyLogin,MyUserRole,MyClaim>
     {
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<AppUser> manager)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<AppUser,int> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
@@ -19,4 +19,10 @@ namespace Authorization
             return userIdentity;
         }
     }
+
+    public class MyUserRole: IdentityUserRole<int> { }
+
+    public class MyRole: IdentityRole<int, MyUserRole> { }
+    public class MyClaim: IdentityUserClaim<int> { }
+    public class MyLogin: IdentityUserLogin<int> { }
 }

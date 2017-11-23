@@ -1,0 +1,21 @@
+﻿@model WebUI.ViewModels.NavViewModel
+
+<li class="title">DEPORTES</li>
+
+<li class="@(Model.SelectedSport != null ? "open" : "")">
+    
+    <a href="@Url.Action("List", "Athlete")">
+        <span class="nav-icon-hexa text-yellow-100">Dc</span> Documentation
+    </a>
+
+    <ul>
+        @foreach (var link in Model.Sports)
+        {
+            <li>
+                <a class="@(link == Model.SelectedSport ? "active" : "")" href="@Url.Action("List", "Athlete", new {sport = link})">
+                    <span class="nav-icon-hexa">Dc</span> @link
+                </a>
+            </li>
+        }
+    </ul>
+</li>

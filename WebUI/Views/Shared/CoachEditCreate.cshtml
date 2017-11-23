@@ -1,0 +1,74 @@
+﻿@model WebUI.ViewModels.CoachEditCreateViewModel
+
+<div class="row">
+
+    <div class="col-md-6">
+
+        <!-- OTHER EXAMPLE -->
+        <div class="block">
+
+            <div class="app-heading app-heading-small">
+                <div class="title">
+                    <h2>Other Fields</h2>
+                    <p>Examples of other field types</p>
+                </div>
+            </div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                if (Model.Coach != null && Model.Coach.Id > 0)
+                 {
+                     @Html.HiddenFor(m => m.Coach.Id)
+                 }
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Coach.Name)
+                    @Html.TextBoxFor(m => m.Coach.Name, new { @class = "form-control", @placeholder = "Nombre" })
+                    @Html.ValidationMessageFor(m => m.Coach.Name)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Coach.LastName)
+                    @Html.TextBoxFor(m => m.Coach.LastName, new { @class = "form-control", @placeholder = "Apellidos" })
+                    @Html.ValidationMessageFor(m => m.Coach.LastName)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Coach.CI)
+                    @Html.TextBoxFor(m => m.Coach.CI, new { @class = "form-control", @placeholder = "Cedula" })
+                    @Html.ValidationMessageFor(m => m.Coach.CI)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Coach.HomeTown)
+                    @Html.DropDownListFor(m => m.Coach.HomeTown, new SelectList(Model.HomeTowns), "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Coach.HomeTown)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Coach.Sport)
+                    @Html.DropDownListFor(m => m.Coach.SportId, new SelectList(Model.Sports, "SportId", "Name"), "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Coach.Sport)
+                </div>
+
+                    @Html.HiddenFor(m => m.HomeTowns)
+
+                    @Html.HiddenFor(m => m.Sports)
+
+                <div class="form-group margin-top-20">
+                    <button class="btn btn-default" type="submit">Crear</button>
+                </div>
+            }
+
+        </div>
+        <!-- END OTHER EXAMPLE -->
+
+    </div>
+    
+</div>
+
+<div>
+    <a href="@Url.Action("Index")"> <button type="button" class="btn btn-primary">Regresar</button> </a>
+</div>
+

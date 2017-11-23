@@ -13,28 +13,28 @@ namespace Domain.Entities
     [Table("Coach")]
     public class Coach: AppUser
     {
-
+        [Required(ErrorMessage = "El campo deporte es requerido")]
         public int SportId { get; set; }
 
         [DisplayName("Deporte")]
         public Sport Sport { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo nombre es requerido")]
         [MaxLength(100)]
         [DisplayName("Nombre")]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo apellidos es requerido")]
         [MaxLength(100)]
         [DisplayName("Apellidos")]
-        public string LatName { get; set; }
+        public string LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo cedula es requerido")]
         [DisplayName("Cedula")]
         public int CI { get; set; }
 
 
-        [Required]
+        [Required(ErrorMessage = "El campo canton es requerido")]
         [DisplayName("Canton")]
         public string HomeTown { get; set; }
         

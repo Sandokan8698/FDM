@@ -35,18 +35,18 @@ namespace WebUI
     }
 
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
-    public class ApplicationUserManager : UserManager<AppUser>
+    public class ApplicationUserManager : UserManager<AppUser,int>
     {
-        public ApplicationUserManager(IUserStore<AppUser> store)
+        public ApplicationUserManager(IUserStore<AppUser,int> store)
             : base(store)
         {
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
         {
-            var manager = new ApplicationUserManager(new UserStore<AppUser>(context.Get<FDMContext>()));
+            var manager = new ApplicationUserManager(new UserStore<AppUser, MyRole, int, MyLogin, MyUserRole, MyClaim>(context.Get<FDMContext>()));
             // Configure validation logic for usernames
-            manager.UserValidator = new UserValidator<AppUser>(manager)
+            manager.UserValidator = new UserValidator<AppUser, int>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
@@ -69,11 +69,11 @@ namespace WebUI
 
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug it in here.
-            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<AppUser>
+            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<AppUser,int>
             {
                 MessageFormat = "Your security code is {0}"
             });
-            manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<AppUser>
+            manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<AppUser,int>
             {
                 Subject = "Security Code",
                 BodyFormat = "Your security code is {0}"
@@ -84,14 +84,14 @@ namespace WebUI
             if (dataProtectionProvider != null)
             {
                 manager.UserTokenProvider = 
-                    new DataProtectorTokenProvider<AppUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+                    new DataProtectorTokenProvider<AppUser,int>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
         }
     }
 
     // Configure the application sign-in manager which is used in this application.
-    public class ApplicationSignInManager : SignInManager<AppUser, string>
+    public class ApplicationSignInManager : SignInManager<AppUser, int>
     {
         public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)

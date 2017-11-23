@@ -28,7 +28,7 @@ namespace WebIU.Infrastructure
         private void AddBindings()
         {
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
-            kernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
+            
         }
     }
 }

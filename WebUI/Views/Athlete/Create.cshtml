@@ -1,0 +1,37 @@
+﻿@using WebIU.Controllers
+@model Domain.Entities.Athlete
+
+@{
+    ViewBag.Title = "Create";
+}
+<div class="row">
+
+    <div class="col-md-6">
+
+        <!-- OTHER EXAMPLE -->
+        <div class="block">
+
+            <div class="app-heading app-heading-small">
+                <div class="title">
+                    <h2>Other Fields</h2>
+                    <p>Examples of other field types</p>
+                </div>
+            </div>
+            @using (Html.BeginForm("Create", "AthleteController"))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name)
+                    @Html.TextBoxFor(m => m.Name,new {@class = "form-control", @placeholder= "youremail@domain.com" })
+                    @*<label>E-mail</label>
+                    <span class="help-block">Validation of elmail adress input</span>
+                    <input class="form-control" data-validation="email" placeholder="youremail@domain.com">*@
+                </div>
+            }
+
+        </div>
+        <!-- END OTHER EXAMPLE -->
+
+    </div>
+</div>
+
+

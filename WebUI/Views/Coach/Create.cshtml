@@ -1,0 +1,22 @@
+﻿@using WebUI.Models
+@using WebUI.ViewModels
+@model WebUI.ViewModels.CoachEditCreateViewModel 
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@section PageHeading
+{
+    @Html.Partial("PageHeading", new PageHeadingViewModel{Title = "Entrenador",Subtitle = "Crear Entrenador",
+    Sections = new List<SectionLink>()
+    {
+        new SectionLink{Nombre = "Home", Action = "List", Controller = "Athlete"},
+        new SectionLink{Nombre = "Entrenador", Action = "Index", Controller = "Coach"},
+        new SectionLink{Nombre = "Crear"}
+    }})
+}
+
+@Html.Partial("CoachEditCreate")
+
+
