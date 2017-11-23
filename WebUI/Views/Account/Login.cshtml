@@ -1,63 +1,103 @@
 ﻿@using WebUI.Models
 @model LoginViewModel
+
 @{
-    ViewBag.Title = "Log in";
+    Layout = null;
 }
 
-<h2>@ViewBag.Title.</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>Use a local account to log in.</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                    </div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Boooya - Login With Background</title>
+
+    <!-- META SECTION -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- END META SECTION -->
+    <!-- CSS INCLUDE -->
+    <link rel="stylesheet" href="~/Content/css/styles.css">
+    <!-- EOF CSS INCLUDE -->
+</head>
+<body>
+
+    <!-- APP WRAPPER -->
+    <div class="app app-fh">
+
+        <!-- START APP CONTAINER -->
+        <div class="app-container" style="background: url(@Url.Content("~/Content/assets/images/background/bg-1.jpg")) center center no-repeat fixed;">
+
+            <div class="app-login-box">
+                <div class="app-login-box-user"><img src="~/Content/img/user/no-image.png"></div>
+                <div class="app-login-box-title">
+                    <div class="title">Ya eres usuario?</div>
+                    <div class="subtitle">Iniciar sesión en su cuenta</div>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+                <div class="app-login-box-container">
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Correo Electronico" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                         </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
-                    </div>
-                </div>
-                <p>
-                    @Html.ActionLink("Register as a new user", "Register")
-                </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
-            }
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
-</div>
+                        <div class="form-group">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Contraseña" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+                        </div>
+                        <div class="form-group">
+
+                            <div class="row">
+                                <div class="col-md-6 col-xs-6">
+                                    <div class="app-checkbox">
+                                        <label><input type="checkbox" name="RememberMe" value="0"> Recordarme</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xs-6">
+                                    <button class="btn btn-success btn-block">Registrarse</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+                <div class="app-login-box-or">
+                    <div class="or">OR</div>
+                </div>
+                <div class="app-login-box-container">
+                    <button class="btn btn-facebook btn-block">Connect With Facebook</button>
+                    <button class="btn btn-twitter btn-block">Connect With Twitter</button>
+                </div>
+                <div class="app-login-box-footer">
+                    &copy; Boooya 2016. All rights reserved.
+                </div>
+            </div>
+
+        </div>
+        <!-- END APP CONTAINER -->
+
+    </div>
+    <!-- END APP WRAPPER -->
+    <!-- IMPORTANT SCRIPTS -->
+    <script type="text/javascript" src="~/Scripts/js/vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/vendor/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/vendor/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/vendor/moment/moment.min.js"></script>
+    <!-- END IMPORTANT SCRIPTS -->
+    <!-- APP SCRIPTS -->
+    <script type="text/javascript" src="~/Scripts/js/app.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/app_plugins.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/app_demo.js"></script>
+    <!-- END APP SCRIPTS -->
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
+</html>

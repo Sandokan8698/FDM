@@ -4,48 +4,67 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CI)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HomeTown)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CI)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HomeTown)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+<div class="col-md-12">
 
-</table>
+    <!-- START LATEST TRANSACTIONS -->
+    <div class="block block-condensed">
+        <div class="app-heading">
+            <div class="title">
+                <h2>Latest Transactions</h2>
+                <p>Quick information</p>
+            </div>
+            <div class="heading-elements">
+                <a href="@Url.Action("Create", "Coach")"><button class="btn btn-default btn-icon-fixed"><span class="icon-file-add"></span> All Transactions</button></a> 
+            </div>
+        </div>
+        <div class="block-content">
+            <div class="table-responsive">
+                <table class="table table-clean-paddings margin-bottom-0">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th width="150">Order</th>
+                            <th width="150">Status</th>
+                            <th width="55"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="contact contact-rounded contact-bordered contact-lg">
+                                        <img src="assets/images/users/user_2.jpg">
+                                        <div class="contact-container">
+                                            <a href="#">@Html.DisplayFor(modelItem => item.Name)</a>
+                                            <span>@Html.DisplayFor(modelItem => item.CI)</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                                <td><span class="label label-success label-bordered">@Html.DisplayFor(modelItem => item.HomeTown)</span></td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-default btn-icon btn-clean dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="icon-cog"></span></button>
+                                        <ul class="dropdown-menu dropdown-left">
+                                            <li><a href="#"><span class="icon-question-circle text-info"></span> More information</a></li> 
+                                            <li><a href="#"><span class="icon-arrow-up-circle text-warning"></span> Promote to top</a></li> 
+                                            <li class="divider"></li>
+                                            <li><a href="#"><span class="icon-cross-circle text-danger"></span> Delete transactions</a></li> 
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- END LATEST TRANSACTIONS -->
+
+</div>
